@@ -4,7 +4,6 @@ class CadastroProduto:
 	
 	__slots__ = ['__codigo', '__nome', '__preco']
 
-
 	def __init__(self, codigo, nome, preco):
 		self.__codigo = codigo
 		self.__nome = nome
