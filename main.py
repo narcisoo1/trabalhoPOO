@@ -1,29 +1,65 @@
 ## Main do trabalho
 from pessoa import Pessoa
 from funcionario import Funcionario
-usuarios=[]
+from cadastroProduto import CadastroProduto
+
 funcionarios=[]
+produtos=[]
+
 op=int(1)
 
 while(op!=0):
-    print("Digite a opção desejada:\n1 - Cadastrar usuário\n2 - Cadastrar funcionário\n3 - Cadastrar produto\n4 - Venda de produto\n0 - Sair")
+
+    print("Digite a opção desejada:")
+    print("[1] - Cadastrar funcionário:")
+    print("[2] - Logar funcionário:")
+    print("[0] - Sair")
+
+
     op=int(input())
+    
     if op == 1:
-        nome=input("\nDigite o nome: ")
-        cpf=input("Digite o cpf: ")
-        endereco=input("Digite o endereço: ")
-        telefone=input("Digite seu telefone: ")
-        usuarios.append(Pessoa(nome,cpf,endereco,telefone))
+        user = input("login: ")
+        passwd = input("password: ")
 
-    if op == 2:
-        nome=input("\nDigite o nome: ")
-        cpf=input("Digite o cpf: ")
-        endereco=input("Digite o endereço: ")
-        telefone=input("Digite seu telefone: ")
-        login=input("Digite seu login: ")
-        senha=input("Digite sua senha: ")
-        funcionarios.append(Funcionario(nome,cpf,endereco,telefone,login,senha))
+        if(user == "admin" and passwd == "admin"):
+            print("\nlogged on\n")
 
-    if op == 0:
-        print("Obrigado, tenha um bom dia!")
+            print("CADASTRO FUNCIONÁRIO: \n")
+
+            nome=input("Digite o nome: ")
+            cpf=input("Digite o cpf: ")
+            endereco=input("Digite o endereço: ")
+            telefone=input("Digite seu telefone: ")
+            login=input("Digite seu login: ")
+            senha=input("Digite sua senha: ")
+            funcionarios.append(Funcionario(nome,cpf,endereco,telefone,login,senha))
+            print()
+    elif op == 2:
+        login = input("Digite seu login: ")
+        senha = input("Digite sua senha: ")
+
+        situation = False
+
+        for obj in funcionarios:
+            if(login == obj.login and senha == obj.senha):
+                situation = True
+                break
+
+        if(situation):
+            print("[1] - Cadastrar produto:")
+            print("[2] - Venda de produto:")
+            print("[0] - Voltar ao menu principal")
+            op2 = input()
+
+            if(op2 == 1):
+                idprod = input("ID produto: ")
+                nomeprod = input("Nome produto: ")
+                precoprod = float(input("Preco produto: "))
+                produtos.append(idprod, nomeprod, precoprod)
+        else
+            print("Login invalido!")
+
+
+print("Obrigado, tenha um bom dia!")
         
