@@ -1,8 +1,8 @@
 ## Main do trabalho
-import pessoa
+from pessoa import Pessoa
+from funcionario import Funcionario
 usuarios=[]
 funcionarios=[]
-
 op=int(1)
 
 while(op!=0):
@@ -13,7 +13,7 @@ while(op!=0):
         cpf=input("Digite o cpf: ")
         endereco=input("Digite o endereço: ")
         telefone=input("Digite seu telefone: ")
-        usuarios.append(pessoa.Pessoa(nome,cpf,endereco,telefone))
+        usuarios.append(Pessoa(nome,cpf,endereco,telefone))
 
     if op == 2:
         nome=input("\nDigite o nome: ")
@@ -22,7 +22,7 @@ while(op!=0):
         telefone=input("Digite seu telefone: ")
         login=input("Digite seu login: ")
         senha=input("Digite sua senha: ")
-        funcionarios.append(pessoa.Funcionario(nome,cpf,endereco,telefone,login,senha))
+        funcionarios.append(Funcionario(nome,cpf,endereco,telefone,login,senha))
 
     if op == 0:
         print("Obrigado, tenha um bom dia!")
