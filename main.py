@@ -53,16 +53,32 @@ while(op!=0):
                 break
 
         if(situation):
-            print("[1] - Cadastrar produto:")
-            print("[2] - Venda de produto:")
-            print("[0] - Voltar ao menu principal")
-            op2 = input()
+            op2 = -1
 
-            if(op2 == 1):
-                idprod = input("ID produto: ")
-                nomeprod = input("Nome produto: ")
-                precoprod = float(input("Preco produto: "))
-                produtos.append(idprod, nomeprod, precoprod)
+            while(op2 != 0):
+                print("[1] - Cadastrar produto:")
+                print("[2] - Venda de produto:")
+                print("[0] - Voltar ao menu principal")
+                op2 = int(input())
+
+                if(op2 == 1):
+                    
+                    qtdProd = int(input("Quantidade de produto: "))
+                    nomeprod = input("Nome produto: ")
+                    precoprod = float(input("Preco produto: "))
+                    
+                    for i in range(0, qtdProd):
+                        idprod = randint(0, 1000000000000)
+                        produtos.append(CadastroProduto(idprod, nomeprod, precoprod))
+
+                elif(op2 == 2):
+                    nomeprod = input("Nome produto: ")
+
+                    situation = False
+
+                    for obj in produtos:
+                        if(obj.nomeProduto == nomeprod):
+                            print('VENDIDO')
         else:
             print("Login invalido!")
 
