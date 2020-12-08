@@ -3,6 +3,7 @@ from pessoa import Pessoa
 from funcionario import Funcionario
 from cadastroProduto import CadastroProduto
 from validacpf import validaCPF
+from random import randint
 
 funcionarios=[]
 produtos=[]
@@ -73,12 +74,20 @@ while(op!=0):
 
                 elif(op2 == 2):
                     nomeprod = input("Nome produto: ")
-
-                    situation = False
-
+                    qtd=int(input("Digite a quantidade: "))
+                    qtdest=int(0)
                     for obj in produtos:
                         if(obj.nomeProduto == nomeprod):
-                            print('VENDIDO')
+                            qtdest+=1
+                    if qtdest==0:
+                        print("Produto não localizado/sem estoque!")
+                    elif qtd>qtdest:
+                        print("Quantidade excede o estoque!")
+                    else:
+                        for x in range(0,len(produtos)-1):
+                            if(produtos[x].nomeProduto == nomeprod):
+                                del(produtos[x])
+                        print("Venda realizada!")
         else:
             print("Login invalido!")
 
