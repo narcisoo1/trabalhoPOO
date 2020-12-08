@@ -2,6 +2,7 @@
 from pessoa import Pessoa
 from funcionario import Funcionario
 from cadastroProduto import CadastroProduto
+from validacpf import validaCPF
 
 funcionarios=[]
 produtos=[]
@@ -28,7 +29,12 @@ while(op!=0):
             print("CADASTRO FUNCIONÁRIO: \n")
 
             nome=input("Digite o nome: ")
-            cpf=input("Digite o cpf: ")
+            contr=False
+            while not(contr):
+                cpf=input("Digite o cpf(somente números): ")
+                contr=validaCPF(cpf)
+                if not(contr):
+                    print("CPF Inválido!")
             endereco=input("Digite o endereço: ")
             telefone=input("Digite seu telefone: ")
             login=input("Digite seu login: ")
@@ -57,7 +63,7 @@ while(op!=0):
                 nomeprod = input("Nome produto: ")
                 precoprod = float(input("Preco produto: "))
                 produtos.append(idprod, nomeprod, precoprod)
-        else
+        else:
             print("Login invalido!")
 
 
