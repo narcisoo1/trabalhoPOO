@@ -15,7 +15,8 @@ while(op!=0):
 
     print("Digite a opção desejada:")
     print("[1] - Cadastrar funcionário:")
-    print("[2] - Logar funcionário:")
+    if len(funcionarios)>0:
+        print("[2] - Logar funcionário:")
     print("[0] - Sair")
 
 
@@ -43,7 +44,9 @@ while(op!=0):
             senha=input("Digite sua senha: ")
             funcionarios.append(Funcionario(nome,cpf,endereco,telefone,login,senha))
             print()
-    elif op == 2:
+        else:
+            print("Erro de login!\n")
+    elif op == 2 and len(funcionarios)>0:
         login = input("Digite seu login: ")
         senha = input("Digite sua senha: ")
 
@@ -59,7 +62,8 @@ while(op!=0):
 
             while(op2 != 0):
                 print("[1] - Cadastrar produto:")
-                print("[2] - Venda de produto:")
+                if len(produtos)>0:
+                    print("[2] - Venda de produto:")
                 print("[0] - Voltar ao menu principal")
                 op2 = int(input())
 
@@ -73,7 +77,7 @@ while(op!=0):
                         idprod = randint(0, 1000000000000)
                         produtos.append(CadastroProduto(idprod, nomeprod, precoprod))
 
-                elif(op2 == 2):
+                elif(op2 == 2 and len(produtos)>0):
                     nomeprod = input("Nome produto: ")
                     qtd=int(input("Digite a quantidade: "))
                     venda=Venda(nomeprod,qtd,produtos)
@@ -82,7 +86,7 @@ while(op!=0):
                     else: 
                         print("Venda cancelada!")
         else:
-            print("Login invalido!")
+            print("Erro de login!\n")
 
 
 print("Obrigado, tenha um bom dia!")

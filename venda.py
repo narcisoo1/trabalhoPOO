@@ -12,7 +12,6 @@ def Venda(nomeprod,qtd,produtos):
     else:
         x=int(0)
         while qtd > 0:
-            print(x)
             if(produtos[x].nomeProduto == nomeprod):
                 del(produtos[x])
                 x-=1
