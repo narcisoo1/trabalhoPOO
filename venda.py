@@ -1,20 +1,35 @@
-def Venda(nomeprod,qtd,produtos):
-    qtdest=int(0)
+def Valida_Venda(nomeprod,qtd,produtos,cpfCliente,cpfVendedor):
     for obj in produtos:
         if(obj.nomeProduto == nomeprod):
-            qtdest+=1
-    if qtdest==0:
-        print("Produto não localizado/sem estoque!")
-        return False
-    elif qtd>qtdest:
-        print("Quantidade excede o estoque!")
-        return False
-    else:
-        x=int(0)
-        while qtd > 0:
-            if(produtos[x].nomeProduto == nomeprod):
-                del(produtos[x])
-                x-=1
-                qtd-=1
-            x+=1
-        return True
+            if(obj.qtdProduto>=qtd):
+                obj.qtdProduto-=qtd
+                return Venda(obj.nomeProduto, obj.idProduto, qtd, cpfCliente, cpfVendedor)
+            else:
+                print("Quantidade excede o estoque!")
+                return False
+    print("Produto não localizado!")
+    return False
+
+class Venda:
+    def __init__ (self, nomeProduto , idProduto, qtdProduto, cliente, vendedor):
+        self._nomeProduto=nomeProduto
+        self._idProduto=idProduto
+        self._qtdProduto=qtdProduto
+        self._cliente=cliente
+        self._vendedor=vendedor
+
+    @property
+    def nomeProduto(self):
+        return self._nomeProduto
+    
+    @property
+    def qtdProduto(self):
+        return self._qtdProduto
+    
+    @property
+    def cliente(self):
+        return self._cliente
+    
+    @property
+    def vendedor(self):
+        return self._vendedor

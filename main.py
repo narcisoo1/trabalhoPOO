@@ -3,11 +3,13 @@ from pessoa import Pessoa
 from funcionario import Funcionario
 from cadastroProduto import CadastroProduto
 from validacpf import validaCPF
-from venda import Venda
+from venda import Valida_Venda
 from random import randint
 
 funcionarios=[]
+clientes=[]
 produtos=[]
+vendas=[]
 
 op=int(1)
 
@@ -32,12 +34,7 @@ while(op!=0):
             print("CADASTRO FUNCIONÁRIO: \n")
 
             nome=input("Digite o nome: ")
-            contr=False
-            while not(contr):
-                cpf=input("Digite o cpf(somente números): ")
-                contr=validaCPF(cpf)
-                if not(contr):
-                    print("CPF Inválido!")
+            cpf=input("Digite o cpf(somente números): ")
             endereco=input("Digite o endereço: ")
             telefone=input("Digite seu telefone: ")
             login=input("Digite seu login: ")
@@ -55,6 +52,7 @@ while(op!=0):
         for obj in funcionarios:
             if(login == obj.login and senha == obj.senha):
                 situation = True
+                cpf_vend=obj.cpf
                 break
 
         if(situation):
@@ -62,29 +60,69 @@ while(op!=0):
 
             while(op2 != 0):
                 print("[1] - Cadastrar produto:")
-                if len(produtos)>0:
+                if len(produtos)>0 and len(clientes)>0:
                     print("[2] - Venda de produto:")
+                print("[3] - Cadastrar cliente")
                 print("[0] - Voltar ao menu principal")
                 op2 = int(input())
 
                 if(op2 == 1):
-                    
+                    controle=0
                     qtdProd = int(input("Quantidade de produto: "))
                     nomeprod = input("Nome produto: ")
-                    precoprod = float(input("Preco produto: "))
-                    
-                    for i in range(0, qtdProd):
-                        idprod = randint(0, 1000000000000)
-                        produtos.append(CadastroProduto(idprod, nomeprod, precoprod))
+                    precoprod = float(input("Preco produto: "))    
+                    if len(produtos)>0:
+                        for x in produtos:
+                            if x.nomeProduto==nomeprod:
+                                x.qtdProduto+=qtdProd
+                                controle+=1
+                        if controle==0:
+                            idprod = randint(0, 1000000000)
+                            produtos.append(CadastroProduto(idprod, nomeprod, precoprod, qtdProd))
+                    else:
+                        idprod = randint(0, 1000000000)
+                        produtos.append(CadastroProduto(idprod, nomeprod, precoprod, qtdProd))
 
-                elif(op2 == 2 and len(produtos)>0):
+                elif(op2 == 2 and len(produtos)>0 and len(clientes)>0):
                     nomeprod = input("Nome produto: ")
                     qtd=int(input("Digite a quantidade: "))
-                    venda=Venda(nomeprod,qtd,produtos)
-                    if venda:
-                        print("Venda realizada!")
-                    else: 
-                        print("Venda cancelada!")
+                    contr=int(0)
+                    while contr==0 :
+                        cpf=input("Digite o cpf do cliente: ")
+                        for x in clientes:
+                            if cpf==x.cpf:
+                                contr+=1
+                        if contr==0:
+                            print("CPF inválido!\n")
+                            op3=int(input("[1] Cadastrar CPF\n[2] Corrigir CPF\n"))
+                            if op3==1:
+                                print("CADASTRO CLIENTE \n")
+                                nome=input("Digite o nome: ")
+                                endereco=input("Digite o endereço: ")
+                                telefone=input("Digite seu telefone: ")
+                                clientes.append(Pessoa(nome,cpf,endereco,telefone))
+                                print()
+                                contr+=1
+                    
+                    venda=Valida_Venda(nomeprod,qtd,produtos,cpf,cpf_vend)
+                    if venda==False:
+                        print("Venda cancelada!\n")
+                    else:
+                        vendas.append(venda)
+                        print("Venda realizada!\n")
+                
+                elif(op2 == 3):
+                    print("CADASTRO CLIENTE: \n")
+                    nome=input("Digite o nome: ")
+                    cpf=input("Digite o cpf(somente números): ")
+                    endereco=input("Digite o endereço: ")
+                    telefone=input("Digite seu telefone: ")
+                    clientes.append(Pessoa(nome,cpf,endereco,telefone))
+                    print()
+                
+                elif(op2 == 4):
+                    for x in vendas:
+                        print("Venda: ",x.nomeProduto,"\nQuantidade: ",x.qtdProduto,"\nVendedor: ",x.vendedor,"\nCliente: ",x.cliente,"\n\n")
         else:
             print("Erro de login!\n")
 

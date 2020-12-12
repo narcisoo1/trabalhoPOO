@@ -1,22 +1,15 @@
 class CadastroProduto:
 
-	__quantidade_Estoque = 0
 	
-	__slots__ = ['__idProduto', '__nomeProduto', '__precoProduto']
+	__slots__ = ['__idProduto', '__nomeProduto', '__precoProduto', '__qtdProduto']
 
 
-	def __init__(self, idProduto, nomeProduto, precoProduto):
+	def __init__(self, idProduto, nomeProduto, precoProduto, qtdProduto):
 		self.__idProduto = idProduto
 		self.__nomeProduto = nomeProduto
 		self.__precoProduto = precoProduto
-		CadastroProduto.__quantidade_Estoque += 1
-
-	@staticmethod
-	def quantidade_estoque():
-		return CadastroProduto.__quantidade_Estoque
-	@staticmethod
-	def retiraEstoque():
-		CadastroProduto.__quantidade_Estoque -= 1
+		self.__qtdProduto = qtdProduto
+	
 
 	@property
 	def idProduto(self):
@@ -39,3 +32,9 @@ class CadastroProduto:
 	def precoProduto(self, precoProduto):
 		self.__precoProduto = precoProduto
 	
+	@property
+	def qtdProduto(self):
+		return self.__qtdProduto
+	@qtdProduto.setter
+	def qtdProduto(self,qtdProduto):
+		self.__qtdProduto=qtdProduto
