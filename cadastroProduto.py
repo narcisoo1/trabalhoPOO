@@ -1,40 +1,19 @@
 class CadastroProduto:
+    __slots__=['_lista_produtos']
 
-	
-	__slots__ = ['__idProduto', '__nomeProduto', '__precoProduto', '__qtdProduto']
-
-
-	def __init__(self, idProduto, nomeProduto, precoProduto, qtdProduto):
-		self.__idProduto = idProduto
-		self.__nomeProduto = nomeProduto
-		self.__precoProduto = precoProduto
-		self.__qtdProduto = qtdProduto
-	
-
-	@property
-	def idProduto(self):
-		return self.__idProduto
-	@idProduto.setter
-	def idProduto(self, idProduto):
-		self.__idProduto = idProduto
-
-	@property
-	def nomeProduto(self):
-		return self.__nomeProduto
-	@nomeProduto.setter
-	def nomeProduto(self, nomeProduto):
-		self.__nomeProduto = nomeProduto
-
-	@property
-	def precoProduto(self):
-		return self.__precoProduto
-	@precoProduto.setter
-	def precoProduto(self, precoProduto):
-		self.__precoProduto = precoProduto
-	
-	@property
-	def qtdProduto(self):
-		return self.__qtdProduto
-	@qtdProduto.setter
-	def qtdProduto(self,qtdProduto):
-		self.__qtdProduto=qtdProduto
+    def __init__(self):
+        self._lista_produtos=[]
+    
+    def cadastra(self, produto):
+        existe=self.busca(produto.idProduto)
+        if(existe==None):
+            self._lista_produtos.append(produto)
+            return True
+        else:
+            return False
+    
+    def busca(self,idProduto):
+        for x in self._lista_produtos:
+            if x.idProduto==idProduto:
+                return x
+        return None

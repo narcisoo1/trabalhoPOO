@@ -2,9 +2,6 @@ from validacpf import validaCPF
 class Pessoa:
     __slots__ = ['_nome', '_cpf', '_endereco', '_telefone']
     def __init__(self,nome,cpf,endereco,telefone):
-        while not(validaCPF(cpf)):
-            print("CPF inválido, digite novamente!\n")
-            cpf=input("CPF:")
         self._nome=nome
         self._cpf=cpf  
         self._endereco=endereco
