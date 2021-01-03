@@ -9,6 +9,8 @@ from PyQt5.QtCore import QCoreApplication
 from telaMenu import telaMenu
 from telaCadastroCliente import telaCadastroCliente
 from telaCadastroProduto import telaCadastroProduto
+from subMenuFuncionario import SubMenuFuncionario
+from telaCadastroFuncionario import TelaCadastroFuncionario
 
 from cadastroPessoa import CadastroPessoa
 from pessoa import Pessoa
@@ -25,6 +27,7 @@ class Ui_main(QtWidgets.QWidget):
         self.stack0 = QtWidgets.QMainWindow()
         self.stack1 = QtWidgets.QMainWindow()
         self.stack2 = QtWidgets.QMainWindow()
+        self.stack3 = QtWidgets.QMainWindow()
 
         self.telaMenu = telaMenu()
         self.telaMenu.setupUi(self.stack0)
@@ -35,9 +38,17 @@ class Ui_main(QtWidgets.QWidget):
         self.telaCadastroProduto = telaCadastroProduto()
         self.telaCadastroProduto.setupUi(self.stack2)
 
+        self.subMenuFuncionario = SubMenuFuncionario()
+        self.subMenuFuncionario.setupUi(self.stack3)
+
+        self.telaCadastroFuncionario = TelaCadastroFuncionario()
+        self.telaCadastroFuncionario.setupUi(self.stack4)
+
         self.QtStack.addWidget(self.stack0)
         self.QtStack.addWidget(self.stack1)
         self.QtStack.addWidget(self.stack2)
+        self.QtStack.addWidget(self.stack3)
+        self.QtStack.addWidget(self.stack4)
 
 class Main(QMainWindow,Ui_main):
     def __init__(self, parent=None):
