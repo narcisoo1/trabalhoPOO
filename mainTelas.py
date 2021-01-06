@@ -28,6 +28,7 @@ class Ui_main(QtWidgets.QWidget):
         self.stack1 = QtWidgets.QMainWindow()
         self.stack2 = QtWidgets.QMainWindow()
         self.stack3 = QtWidgets.QMainWindow()
+        self.stack4 = QtWidgets.QMainWindow()
 
         self.telaMenu = telaMenu()
         self.telaMenu.setupUi(self.stack0)

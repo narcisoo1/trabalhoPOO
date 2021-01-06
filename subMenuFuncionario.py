@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class SubMenuFuncionario(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -43,6 +42,7 @@ class SubMenuFuncionario(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

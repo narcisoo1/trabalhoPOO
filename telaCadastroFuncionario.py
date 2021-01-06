@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class TelaCadastroFuncionario(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -76,6 +75,8 @@ class TelaCadastroFuncionario(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
