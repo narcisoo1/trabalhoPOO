@@ -6,6 +6,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox
 from PyQt5.QtCore import QCoreApplication
 
+from tela_inicial import Tela_inicial
+from login import Login
+
+
+
 from telaMenu import telaMenu
 from telaCadastroCliente import telaCadastroCliente
 from telaCadastroProduto import telaCadastroProduto
@@ -29,27 +34,37 @@ class Ui_main(QtWidgets.QWidget):
         self.stack2 = QtWidgets.QMainWindow()
         self.stack3 = QtWidgets.QMainWindow()
         self.stack4 = QtWidgets.QMainWindow()
+        self.stack5 = QtWidgets.QMainWindow()
+        self.stack6 = QtWidgets.QMainWindow()
+
+        self.tela_inicial = Tela_inicial()
+        self.tela_inicial.setupUi(self.stack0)
+        self.tela_login_ADM = Login()
+        self.tela_login_ADM.setupUi(self.stack1)
 
         self.telaMenu = telaMenu()
-        self.telaMenu.setupUi(self.stack0)
+        self.telaMenu.setupUi(self.stack2)
 
         self.telaCadastroCliente = telaCadastroCliente()
-        self.telaCadastroCliente.setupUi(self.stack1)
+        self.telaCadastroCliente.setupUi(self.stack3)
         
         self.telaCadastroProduto = telaCadastroProduto()
-        self.telaCadastroProduto.setupUi(self.stack2)
+        self.telaCadastroProduto.setupUi(self.stack4)
 
         self.subMenuFuncionario = SubMenuFuncionario()
-        self.subMenuFuncionario.setupUi(self.stack3)
+        self.subMenuFuncionario.setupUi(self.stack5)
 
         self.telaCadastroFuncionario = TelaCadastroFuncionario()
-        self.telaCadastroFuncionario.setupUi(self.stack4)
+        self.telaCadastroFuncionario.setupUi(self.stack6)
+
 
         self.QtStack.addWidget(self.stack0)
         self.QtStack.addWidget(self.stack1)
         self.QtStack.addWidget(self.stack2)
         self.QtStack.addWidget(self.stack3)
         self.QtStack.addWidget(self.stack4)
+        self.QtStack.addWidget(self.stack5)
+        self.QtStack.addWidget(self.stack6)
 
 class Main(QMainWindow,Ui_main):
     def __init__(self, parent=None):
@@ -58,6 +73,19 @@ class Main(QMainWindow,Ui_main):
 
         self.pessoa = CadastroPessoa()
         self.produto = CadastroProduto()
+
+        #tela 1
+        self.tela_inicial.pushButton.clicked.connect(self.abrirTelaCadastroFuncionario)
+        self.tela_inicial.pushButton_2.clicked.connect(self.fecharTelaInicial)
+
+        #tela 2
+        self.tela_login_ADM.pushButton.clicked.connect(self.botaoLogar)
+        self.tela_login_ADM.pushButton_2.clicked.connect(self.botaoVoltarTelaInicial)
+
+        #tela 3
+        self.telaCadastroFuncionario.pushButton_2.clicked.connect(self.botaoCadastraFuncionario)
+        self.telaCadastroFuncionario.pushButton.clicked.connect(self.botaoVoltarTelaCadastroFuncionario)
+
         self.telaMenu.pushButton.clicked.connect(self.abrirTelaCadastroCliente)
         self.telaMenu.pushButton_2.clicked.connect(self.abrirTelaCadastroProduto)
 
@@ -65,7 +93,17 @@ class Main(QMainWindow,Ui_main):
         self.telaCadastroCliente.pushButton.clicked.connect(self.botaoVoltar)
         self.telaCadastroProduto.pushButton_2.clicked.connect(self.botaoCadastraProduto)
         self.telaCadastroProduto.pushButton.clicked.connect(self.botaoVoltar)
+    def botaoCadastraFuncionario(self):
+    	self.QtStack.setCurrentIndex(5)
 
+    def botaoVoltarTelaCadastroFuncionario(self):
+    	self.QtStack.setCurrentIndex(1)
+
+    def botaoLogar(self):
+    	self.QtStack.setCurrentIndex(6)
+
+    def botaoVoltarTelaInicial(self):
+    	self.QtStack.setCurrentIndex(0)
 
     def botaoCadastraCliente(self):
         nome=self.telaCadastroCliente.lineEdit.text()
@@ -106,6 +144,13 @@ class Main(QMainWindow,Ui_main):
             QMessageBox.information(None,"Erro!","Todos os valores devem ser preenchidos!")
        
         self.QtStack.setCurrentIndex(0)
+
+    ###############################################################
+    def abrirTelaCadastroFuncionario(self):
+    	self.QtStack.setCurrentIndex(1)
+    def fecharTelaInicial(self):
+    	sys.exit()
+    ###############################################################
 
     def botaoVoltar(self):
         self.QtStack.setCurrentIndex(0)
