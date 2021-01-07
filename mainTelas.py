@@ -8,6 +8,7 @@ from PyQt5.QtCore import QCoreApplication
 
 from tela_inicial import Tela_inicial
 from login import Login
+from escolha_Cadastro import Escolha_Cadastro
 
 from telaMenu import telaMenu
 from telaCadastroCliente import telaCadastroCliente
@@ -36,6 +37,7 @@ class Ui_main(QtWidgets.QWidget):
         self.stack4 = QtWidgets.QMainWindow()
         self.stack5 = QtWidgets.QMainWindow()
         self.stack6 = QtWidgets.QMainWindow()
+        self.stack7 = QtWidgets.QMainWindow()
 
         self.tela_inicial = Tela_inicial()
         self.tela_inicial.setupUi(self.stack0)
@@ -48,14 +50,17 @@ class Ui_main(QtWidgets.QWidget):
         self.telaCadastroCliente = telaCadastroCliente()
         self.telaCadastroCliente.setupUi(self.stack3)
 
+        self.telaEscolha = Escolha_Cadastro()
+        self.telaEscolha.setupUi(self.stack4)
+
         self.telaCadastroProduto = telaCadastroProduto()
-        self.telaCadastroProduto.setupUi(self.stack4)
+        self.telaCadastroProduto.setupUi(self.stack5)
 
         self.subMenuFuncionario = SubMenuFuncionario()
-        self.subMenuFuncionario.setupUi(self.stack5)
+        self.subMenuFuncionario.setupUi(self.stack6)
 
         self.telaCadastroFuncionario = TelaCadastroFuncionario()
-        self.telaCadastroFuncionario.setupUi(self.stack6)
+        self.telaCadastroFuncionario.setupUi(self.stack7)
 
         self.QtStack.addWidget(self.stack0)
         self.QtStack.addWidget(self.stack1)
@@ -64,7 +69,7 @@ class Ui_main(QtWidgets.QWidget):
         self.QtStack.addWidget(self.stack4)
         self.QtStack.addWidget(self.stack5)
         self.QtStack.addWidget(self.stack6)
-
+        self.QtStack.addWidget(self.stack7)
 
 class Main(QMainWindow, Ui_main):
     def __init__(self, parent=None):
@@ -75,22 +80,23 @@ class Main(QMainWindow, Ui_main):
         self.produto = CadastroProduto()
         self.funcio = Funcionario()
 
-        # tela 1
+        # tela inicial stack 0
         self.tela_inicial.pushButton.clicked.connect(self.abrirTelaSubMenuFuncionario)
         self.tela_inicial.pushButton_2.clicked.connect(self.fecharTelaInicial)
 
-        # tela 2
+        # tela login stack 1
         self.tela_login_ADM.pushButton.clicked.connect(self.botaoLogar)
         self.tela_login_ADM.pushButton_2.clicked.connect(self.botaoVoltarTelaInicial)
 
-        # tela 3
-        self.telaCadastroFuncionario.pushButton_2.clicked.connect(self.botaoCadastraFuncionario)
-        self.telaCadastroFuncionario.pushButton.clicked.connect(self.botaoVoltarTelaCadastroFuncionario)
-
-        # tela submenu funcionario - stack 5
+        # tela submenu funcionario - stack 6
         self.subMenuFuncionario.pushButton.clicked.connect(self.abrirTelaCadastroFuncionario)
         self.subMenuFuncionario.pushButton_2.clicked.connect(self.abrirTelaLogin)
         self.subMenuFuncionario.pushButton_3.clicked.connect(self.abrirTelaInicial)
+
+        #tela escolha
+        self.telaEscolha.pushButton.clicked.connect(self.abrirTelaCadastroCliente)
+        #self.telaEscolha.pushButton_2.clicked.connect(self.abrirTelaCadastroProduto)
+        #self.telaEscolha.pushButton_3.clicked.connect(self.)
 
         #tela Cadastro Funcionario
         self.telaCadastroFuncionario.pushButton_2.clicked.connect(self.botaoCadastraFuncionario)
@@ -126,13 +132,13 @@ class Main(QMainWindow, Ui_main):
         else:
             QMessageBox.information(None, "Erro!", "Todos os valores devem ser preenchidos!")
 
-        self.QtStack.setCurrentIndex(0)
+        self.QtStack.setCurrentIndex(6)
 
     def botaoVoltarTelaCadastroFuncionario(self):
         self.QtStack.setCurrentIndex(1)
 
     def botaoLogar(self):
-        self.QtStack.setCurrentIndex(6)
+        self.QtStack.setCurrentIndex(4)
 
     def botaoVoltarTelaInicial(self):
         self.QtStack.setCurrentIndex(0)
@@ -179,10 +185,10 @@ class Main(QMainWindow, Ui_main):
 
     ###############################################################
     def abrirTelaSubMenuFuncionario(self):
-        self.QtStack.setCurrentIndex(5)
+        self.QtStack.setCurrentIndex(6)
 
     def abrirTelaCadastroFuncionario(self):
-        self.QtStack.setCurrentIndex(6)
+        self.QtStack.setCurrentIndex(7)
 
     def abrirTelaLogin(self):
         self.QtStack.setCurrentIndex(1)
