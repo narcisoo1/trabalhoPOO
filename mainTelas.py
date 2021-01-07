@@ -206,7 +206,7 @@ class Main(QMainWindow, Ui_main):
         self.QtStack.setCurrentIndex(0)
 
     def abrirTelaCadastroCliente(self):
-        self.QtStack.setCurrentIndex(1)
+        self.QtStack.setCurrentIndex(3)
 
     def abrirTelaCadastroProduto(self):
         self.QtStack.setCurrentIndex(2)
