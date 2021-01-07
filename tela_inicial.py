@@ -50,7 +50,7 @@ class Tela_inicial(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Cadastrar Fincionario"))
+        self.pushButton.setText(_translate("MainWindow", "Cadastrar/Logar"))
         self.pushButton_2.setText(_translate("MainWindow", "Sair"))
         self.label.setText(_translate("MainWindow", "BEM VINDO AO SISTEMA!"))
 
