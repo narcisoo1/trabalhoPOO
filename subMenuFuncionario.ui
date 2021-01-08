@@ -6,19 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>367</width>
-    <height>264</height>
+    <width>640</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>390</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>VOLTAR</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>20</y>
+      <x>230</x>
+      <y>80</y>
       <width>151</width>
       <height>20</height>
      </rect>
@@ -35,8 +48,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>100</y>
+      <x>190</x>
+      <y>190</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -48,8 +61,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>100</y>
+      <x>360</x>
+      <y>190</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -58,26 +71,13 @@
      <string>LOGAR</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>190</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>SAIR</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>367</width>
+     <width>640</width>
      <height>21</height>
     </rect>
    </property>

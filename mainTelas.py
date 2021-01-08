@@ -78,7 +78,8 @@ class Main(QMainWindow, Ui_main):
 
         self.pessoa = CadastroPessoa()
         self.produto = CadastroProduto()
-        self.funcio = Funcionario()
+        self.funcio =
+
 
         # tela inicial stack 0
         self.tela_inicial.pushButton.clicked.connect(self.abrirTelaSubMenuFuncionario)
@@ -100,7 +101,7 @@ class Main(QMainWindow, Ui_main):
 
         #tela Cadastro Funcionario
         self.telaCadastroFuncionario.pushButton_2.clicked.connect(self.botaoCadastraFuncionario)
-        self.telaCadastroFuncionario.pushButton.clicked.connect(self.botaoVoltar)
+        self.telaCadastroFuncionario.pushButton.clicked.connect(self.abrirTelaInicial)
 
         self.telaMenu.pushButton.clicked.connect(self.abrirTelaCadastroCliente)
         self.telaMenu.pushButton_2.clicked.connect(self.abrirTelaCadastroProduto)
