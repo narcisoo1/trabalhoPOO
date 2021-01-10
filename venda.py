@@ -11,9 +11,8 @@ def Valida_Venda(nomeprod,qtd,produtos,cpfCliente,cpfVendedor):
     return False
 
 class Venda:
-    def __init__ (self, nomeProduto , idProduto, qtdProduto, cliente, vendedor):
+    def __init__ (self, nomeProduto, qtdProduto, cliente, vendedor):
         self._nomeProduto=nomeProduto
-        self._idProduto=idProduto
         self._qtdProduto=qtdProduto
         self._cliente=cliente
         self._vendedor=vendedor
