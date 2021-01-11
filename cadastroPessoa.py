@@ -17,3 +17,9 @@ class CadastroPessoa:
             if x.cpf==cpf:
                 return x
         return None
+
+    def vazio(self):
+        if len(self._lista_pessoas)==0:
+            return True
+        else:
+            return False

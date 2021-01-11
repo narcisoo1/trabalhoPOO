@@ -179,17 +179,24 @@ class Main(QMainWindow, Ui_main):
         quantidade = int(self.telaVenda.lineEdit_6.text())
         cpfcliente = self.telaVenda.lineEdit_5.text()
         if not (nomeProduto == '' or quantidade == '' or cpfcliente == '' or sscpf == ''):
-            v = Venda(nomeProduto,quantidade,cpfcliente,sscpf)
-            if (self.produto.venda(v)):
-                QMessageBox.information(None, "Ok!", "Venda realizada!")
-                self.telaVenda.lineEdit_4.setText('')
-                self.telaVenda.lineEdit_6.setText('')
-                self.telaVenda.lineEdit_5.setText('')
+            if self.pessoa.vazio():
+                QMessageBox.information(None, "Erro!", "Sem clientes cadastrados!")
+                self.QtStack.setCurrentIndex(2)
+            elif(self.pessoa.busca(cpfcliente)==None):
+                QMessageBox.information(None, "Erro!", "Cliente com CPF não cadastrado!")
+                self.QtStack.setCurrentIndex(2)
             else:
-                QMessageBox.information(None, "Erro!", "Venda cancelada!")
+                v = Venda(nomeProduto,quantidade,cpfcliente,sscpf)
+                if (self.produto.venda(v)):
+                    QMessageBox.information(None, "Ok!", "Venda realizada!")
+                    self.telaVenda.lineEdit_4.setText('')
+                    self.telaVenda.lineEdit_6.setText('')
+                    self.telaVenda.lineEdit_5.setText('')
+                else:
+                    QMessageBox.information(None, "Erro!", "Produto inválido ou fora de estoque!")
         else:
             QMessageBox.information(None, "Erro!", "Todos os valores devem ser preenchidos!")
-        self.QtStack.setCurrentIndex(8)
+            self.QtStack.setCurrentIndex(8)
 
 # Botoes voltar
     def botaoVoltarTelaInicial(self):
