@@ -3,8 +3,20 @@ from validacpf import validaCPF
 
 class Pessoa:
     __slots__ = ['_nome', '_cpf', '_endereco', '_telefone']
-
+    
+    """
+    Inicialia atributos do objeto
+    """
     def __init__(self, nome, cpf, endereco, telefone, senha=0, login=0):
+        """
+        :param nome: String
+        :param cpf: String
+        :param endereco: String
+        :param telefone: String
+        :param senha: String
+        :param login: String
+        """
+        
         self._nome = nome
         self._cpf = cpf
         self._endereco = endereco
