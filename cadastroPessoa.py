@@ -9,6 +9,8 @@ class CadastroPessoa:
     
     def cadastra(self, pessoa):
         """
+        Cadastra uma pessoa
+
         Retorna True se conseguiu cadastrar pessoa e False caso contrário.
         :param pessoa: Objeto
         :return: Booleano True ou False
@@ -22,7 +24,9 @@ class CadastroPessoa:
     
     def busca(self,cpf):
         """
-        Retorna uma string se conseguiu encontrar o cpf na self._lista_pessoas, caso contrário retorna None
+        Busca por uma pessoa
+
+        Retorna um objeto se conseguiu encontrar o cpf na self._lista_pessoas, caso contrário retorna None
         :param cpf: String
         :return: String ou None
         """
@@ -33,7 +37,9 @@ class CadastroPessoa:
 
     def vazio(self):
         """
-        Retorna True se a lista self._lista_pessoas estiver vazia, False caso contrário 
+        Testa se lista está vazia
+        
+        Retorna False se a lista self._lista_pessoas estiver vazia, True caso contrário 
         :return: Booleano True ou Falso
         """
         if len(self._lista_pessoas)==0:
