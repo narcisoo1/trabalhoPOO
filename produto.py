@@ -2,8 +2,17 @@ class Produto:
 	
 	__slots__ = ['__idProduto', '__nomeProduto', '__precoProduto', '__qtdProduto']
 
+	"""
+	Inicializa atributos do objeto
+	"""
 
 	def __init__(self, idProduto, nomeProduto, precoProduto, qtdProduto):
+		"""
+		:param idProduto: String
+		:param nomeProduto: String
+		:param precoProduto: Float
+		:param qtdProduto: Int
+		"""
 		self.__idProduto = idProduto
 		self.__nomeProduto = nomeProduto
 		self.__precoProduto = precoProduto
