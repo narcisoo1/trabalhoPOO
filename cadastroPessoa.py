@@ -33,7 +33,7 @@ class CadastroPessoa:
 
     def vazio(self):
         """
-        Retorna False se a lista self._lista_pessoas estiver vazia, True caso contrário 
+        Retorna True se a lista self._lista_pessoas estiver vazia, False caso contrário 
         :return: Booleano True ou Falso
         """
         if len(self._lista_pessoas)==0:
