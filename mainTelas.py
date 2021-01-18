@@ -79,6 +79,7 @@ class Ui_main(QtWidgets.QWidget):
         self.telaCadastroFuncionario = TelaCadastroFuncionario()
         self.telaCadastroFuncionario.setupUi(self.stack7)
 
+        '''Adicionando widget para todas as stacks criadas'''
         self.QtStack.addWidget(self.stack0)
         self.QtStack.addWidget(self.stack1)
         self.QtStack.addWidget(self.stack2)
@@ -90,13 +91,16 @@ class Ui_main(QtWidgets.QWidget):
 
 class Main(QMainWindow, Ui_main):
     def __init__(self, parent=None):
+
+        '''Classe para criacao de logica do sistema'''
+
         super(Main, self).__init__(parent)
         self.setupUi(self)
 
         self.pessoa = CadastroPessoa()
         self.produto = CadastroProduto()
 
-
+        '''Desenvolvimento dos botoes e associacao a suas respectivas telas que direcionao para os metodos '''
 
         # tela inicial stack 0
         self.tela_inicial.pushButton.clicked.connect(self.abrirTelaSubMenuFuncionario)
@@ -127,6 +131,8 @@ class Main(QMainWindow, Ui_main):
         self.telaCadastroCliente.pushButton.clicked.connect(self.botaoVoltar)
         self.telaCadastroProduto.pushButton_2.clicked.connect(self.botaoCadastraProduto)
         self.telaCadastroProduto.pushButton.clicked.connect(self.botaoVoltar)
+
+    '''Funcoes que executam a acao de cada botao'''
 
     def botaoCadastraFuncionario(self):
         nome = self.telaCadastroFuncionario.lineEdit.text()
