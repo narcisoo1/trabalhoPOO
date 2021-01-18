@@ -1,4 +1,9 @@
 def validaCPF(cpf):
+    """
+    Retorna True caso cpf seja válido ou False caso contrário
+    :param cpf: Objeto
+    :return: Booleano True ou False
+    """
     if cpf.isnumeric() and len(cpf)==11:
         valida=int(cpf[0])*10+int(cpf[1])*9+int(cpf[2])*8+int(cpf[3])*7+int(cpf[4])*6+int(cpf[5])*5+int(cpf[6])*4+int(cpf[7])*3+int(cpf[8])*2
         aux=(valida*10)%11
