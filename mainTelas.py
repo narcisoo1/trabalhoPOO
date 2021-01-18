@@ -5,6 +5,10 @@ __email__= 'vitoriacrisrs@gmail.com'
 __version__= '1.0.0.1'
 __status__= 'desenvolvimento'
 
+'''
+    Arquivo que contem toda a logica das telas de interacao com usuario
+'''
+
 import sys
 import os
 import random
@@ -30,12 +34,17 @@ from produto import Produto
 from cadastroProduto import CadastroProduto
 
 
+
 class Ui_main(QtWidgets.QWidget):
     def setupUi(self, Main):
         Main.setObjectName('Main')
         Main.resize(640, 480)
 
+        '''Criacao da pilha de interface do tipo QT para notificar ao sistema a tela que deve estar em evidencia'''
+
         self.QtStack = QtWidgets.QStackedLayout()
+
+        '''Instancia das telas utilizadas o sistema'''
 
         self.stack0 = QtWidgets.QMainWindow()
         self.stack1 = QtWidgets.QMainWindow()
@@ -46,6 +55,7 @@ class Ui_main(QtWidgets.QWidget):
         self.stack6 = QtWidgets.QMainWindow()
         self.stack7 = QtWidgets.QMainWindow()
 
+        '''Descriacao da tela que sera setada para seu respectivo stack'''
         self.tela_inicial = Tela_inicial()
         self.tela_inicial.setupUi(self.stack0)
         self.tela_login_ADM = Login()
