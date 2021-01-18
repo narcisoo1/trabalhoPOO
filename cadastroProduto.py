@@ -9,6 +9,8 @@ class CadastroProduto:
     
     def cadastra(self, produto):
         """
+        Cadastra um produto 
+
         retorna True se coseguiu cadastrar produto e False caso contrário
         :param produto: Objeto
         :return: Booleano True ou False
@@ -27,7 +29,9 @@ class CadastroProduto:
     
     def busca(self,idProduto):
         """
-        Retorna id do produto caso encontre, caso contrário retorna None
+        Busca por um produto
+
+        Retorna um objeto caso encontre id do produto, caso contrário retorna None
         :param idProduto: String
         :return: String ou None
         """
@@ -38,6 +42,8 @@ class CadastroProduto:
     
     def venda(self,venda):
         """
+        Vende um produto
+        
         Retorna True caso seja possível vender produto, False caso contrário
         :param venda: Objeto
         :return: Booleano True ou Falso
