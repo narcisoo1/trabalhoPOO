@@ -10,12 +10,10 @@ __status__= 'desenvolvimento'
 '''
 
 import sys
-import os
 import random
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
 
 from tela_inicial import Tela_inicial
 from login import Login
@@ -31,7 +29,7 @@ from funcionario import Funcionario
 from cadastroPessoa import CadastroPessoa
 from pessoa import Pessoa
 from produto import Produto
-from cadastroProduto import CadastroProduto
+from trabalhoPOO.telas.cadastroProduto import CadastroProduto
 
 
 

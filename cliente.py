@@ -7,7 +7,7 @@ client_socket.connect(addr)
 
 mensagem = ''
 while(mensagem!= 'sair'):
-    mensagem = input('Digite uma mensagem para enviar ao servidor')
+    mensagem = input('Digite uma mensagem para enviar ao servidor: ')
     client_socket.send(mensagem.encode())
     print('Mensagem recebida' + client_socket.recv(1024).decode())
 
