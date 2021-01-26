@@ -1,7 +1,7 @@
 ## Main do trabalho
 from pessoa import Pessoa
 from funcionario import Funcionario
-from trabalhoPOO.telas.cadastroProduto import CadastroProduto
+from trabalhoPOO.cadastroProduto import CadastroProduto
 from venda import Valida_Venda
 from random import randint
 
