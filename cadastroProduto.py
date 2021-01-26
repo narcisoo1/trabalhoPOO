@@ -48,6 +48,7 @@ class CadastroProduto:
         :param venda: Objeto
         :return: Booleano True ou Falso
         """
+        
         for x in range(0,len(self._lista_produtos)):
             if venda.nomeProduto == self._lista_produtos[x].nomeProduto:
                 if venda.qtdProduto <= self._lista_produtos[x].qtdProduto:
