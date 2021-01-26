@@ -7,7 +7,7 @@ class Pessoa:
     """
     Inicialia atributos do objeto
     """
-    def __init__(self, nome, cpf, endereco, telefone, senha=0, login=0):
+    def __init__(self, nome, cpf, endereco, telefone):
         """
         :param nome: String
         :param cpf: String
@@ -21,8 +21,6 @@ class Pessoa:
         self._cpf = cpf
         self._endereco = endereco
         self._telefone = telefone
-        self._senha = senha
-        self._login = login
 
     @property
     def nome(self):
@@ -55,11 +53,3 @@ class Pessoa:
     @telefone.setter
     def telefone(self, telefone):
         self._telefone = telefone
-
-    @property
-    def senha(self):
-        return self._senha
-
-    @property
-    def login(self):
-        return self._login
