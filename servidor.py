@@ -6,17 +6,6 @@ import mysql.connector as mysql
 conexao = mysql.connect(host='localhost', db='trabalhoPOO', user='root', passwd='password')
 cursor = conexao.cursor()
 
-from funcionario import Funcionario
-from cadastroFuncionario import OpcoesFuncionario
-
-from pessoa import Pessoa
-from cadastroPessoa import CadastroPessoa
-
-from produto import Produto
-from cadastroProduto import CadastroProduto
-
-from venda import Venda
-
 import socket
 
 host = 'localhost'
@@ -31,10 +20,6 @@ con, cliente = serv_socket.accept()
 print('Conectado')
 print('Aguardando mensagem...')
 enviar = ''
-
-funcionario = OpcoesFuncionario()
-pessoa = CadastroPessoa()
-produto = CadastroProduto()
 
 while(enviar!= 'sair'):
     recebe = con.recv(1024)
