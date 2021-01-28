@@ -176,12 +176,14 @@ while(mensagem!= 'sair'):
             mensagem="lf;"+loginfunc+";"+senhafunc
             client_socket.send(mensagem.encode())
             control=client_socket.recv(1024).decode('utf-8')
-            if(control!="None"):
+            if(control!="None" and control!="false"):
                 global sslogin
                 sslogin=loginfunc
                 global sscpf
                 sscpf=control
                 self.QtStack.setCurrentIndex(2)
+            elif(control=="false"):
+                QMessageBox.information(None, "Erro!", "Usuario ou senha não preenchido!")
             else:
                 QMessageBox.information(None, "Erro!", "Login inválido!")
 
@@ -204,10 +206,13 @@ while(mensagem!= 'sair'):
                 QMessageBox.information(None, "Erro!", "Sem pessoas cadastradas!")
             elif(control=="falsecpf"):
                 QMessageBox.information(None, "Erro!", "CPF não cadastrado!")
-            elif(control=="false"):
-                QMessageBox.information(None, "Erro!", "Produto inválido ou fora de estoque!")
-            else:
+            elif(control=="falseqtd"):
+                QMessageBox.information(None, "Erro!", "Produto fora de estoque!")
+            elif(control=="falsepd"):
+                QMessageBox.information(None, "Erro!", "ID de produto inválido!")
+            elif(control=="falsevazio"):
                 QMessageBox.information(None, "Erro!", "Campo vazio!")
+            
             self.QtStack.setCurrentIndex(8)
 
         def botaoVoltarTelaInicial(self):
