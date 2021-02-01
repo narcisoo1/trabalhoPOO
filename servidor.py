@@ -121,10 +121,12 @@ while(enviar!= 'sair'):
                 uppco='UPDATE produtos SET preco='+str(preco)+' WHERE id='+id
                 cursor.execute(upqtd)
                 cursor.execute(uppco)
+                print("ATUALIZADO PRODUTO")
                 enviar = "true"
             else:
                 add='INSERT INTO produtos (nome,preco,quantidade,id) VALUES ("'+nome+'",'+preco+','+quantidade+','+id+')'
                 cursor.execute(add)
+                print("CADASTRADO NOVO PRODUTO")
                 enviar = "true"
         else:
             enviar = "falsevazio"
